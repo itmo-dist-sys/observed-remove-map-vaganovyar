@@ -121,6 +121,7 @@ func (n *CRDTMapNode) Merge(remote MapState) {
 		local, exists := n.state[k]
 		if !exists || local.Version.less(remoteEntry.Version) {
 			n.state[k] = remoteEntry
+			n.clock = max(n.clock, remoteEntry.Version.Counter)
 		}
 	}
 }
