@@ -164,5 +164,5 @@ func (n *CRDTMapNode) Receive(msg *hive.Message) error {
 
 func (n *CRDTMapNode) nextVersion() Version {
 	n.clock++
-	return Version{n.clock + 1, n.ID()}
+	return Version{n.clock, n.ID()}
 }
